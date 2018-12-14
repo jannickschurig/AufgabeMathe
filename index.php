@@ -103,7 +103,7 @@
 							$zahl2 = $zahl1 * $ergebnis;
 						} else {
 							if($operation == '-'){
-								$zahl2 = $zahl1 - $ergebnis;
+								$zahl2 = $zahl1 + $ergebnis;
 							}
 						}
 						
