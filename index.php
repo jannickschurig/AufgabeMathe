@@ -101,12 +101,17 @@
 						
 						if($operation == '/'){
 							$zahl2 = $zahl1 * $ergebnis;
+							$h = $zahl2;
+							$zahl2 = $zahl1;
+							$zahl1 = $h;
 						} else {
 							if($operation == '-'){
 								$zahl2 = $zahl1 + $ergebnis;
+								$h = $zahl2;
+								$zahl2 = $zahl1;
+								$zahl1 = $h;
 							}
 						}
-						
 						array_push($aufgaben, $zahl1 . ',' . $operation . ',' . $zahl2 . ',' . $ergebnis);
 					}
 				}
@@ -186,7 +191,7 @@
 						echo '</section>';
 						echo '<section class="tr aw">';
 							echo '<div></div>';
-							echo'<div>'. $num1 . " " . $aufgabe_operation . " " . $num2 . " = " . $ergebnis . '</div>';
+							echo '<div>'. $num1 . " " . $aufgabe_operation . " " . $num2 . " = " . $ergebnis . '</div>';
 						echo '</section>';
 					} else {
 						if (is_numeric($data['ergebnis' . $i])){
