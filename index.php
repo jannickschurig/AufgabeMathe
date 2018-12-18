@@ -86,9 +86,6 @@
 						case '+':
 								$ergebnis = intval($zahl1) + intval($zahl2);
 							break;
-						case '-':
-								$ergebnis = intval($zahl1) - intval($zahl2);
-							break;
 						case '*':
 								$ergebnis = intval($zahl1) * intval($zahl2);
 							break;
@@ -96,20 +93,14 @@
 					array_push($aufgaben, $zahl1 . ',' . $operation . ',' . $zahl2 . ',' . $ergebnis);
 				} else {
 					if ($operation == '/' || $operation == '-'){						
-						$zahl1 = rand(1, 100);
+						$zahl2 = rand(1, 100);
 						$ergebnis = rand($min, $max);
 						
 						if($operation == '/'){
-							$zahl2 = $zahl1 * $ergebnis;
-							$h = $zahl2;
-							$zahl2 = $zahl1;
-							$zahl1 = $h;
+							$zahl1 = $zahl2 * $ergebnis;
 						} else {
 							if($operation == '-'){
-								$zahl2 = $zahl1 + $ergebnis;
-								$h = $zahl2;
-								$zahl2 = $zahl1;
-								$zahl1 = $h;
+								$zahl1 = $zahl2 + $ergebnis;
 							}
 						}
 						array_push($aufgaben, $zahl1 . ',' . $operation . ',' . $zahl2 . ',' . $ergebnis);
@@ -187,21 +178,23 @@
 					if($data['ergebnis' . $i] == $aufgabe[3]){
 						echo '<section class="tr aw">';
 							echo '<div>' . ($i+1) . '. Aufgabe:</div>';
-							echo '<div><b class="r">richtig!</b></div>';
-						echo '</section>';
-						echo '<section class="tr aw">';
-							echo '<div></div>';
-							echo '<div>'. $num1 . " " . $aufgabe_operation . " " . $num2 . " = " . $ergebnis . '</div>';
+							echo '
+								<div>
+									<b class="r">richtig!</b><br>'
+									. $num1 . " " . $aufgabe_operation . " " . $num2 . " = " . $ergebnis . 
+								'</div>
+							';
 						echo '</section>';
 					} else {
 						if (is_numeric($data['ergebnis' . $i])){
 							echo '<section class="tr aw">';
 								echo '<div>' . ($i+1) . '. Aufgabe:</div>';
-								echo '<div><b class="f">leider falsch!</b></div>';
-							echo '</section>';
-							echo '<section class="tr aw">';
-								echo '<div></div>';
-								echo '<div>' . $num1 . " " . $aufgabe_operation . " " . $num2 . " != " . $data['ergebnis' . $i] . ' sondern '. $num1 . " " . $aufgabe_operation . " " . $num2 . " = " . $ergebnis .'</div>';
+								echo '
+									<div>
+										<b class="f">leider falsch!</b><br>'
+										. $num1 . " " . $aufgabe_operation . " " . $num2 . " != " . $data['ergebnis' . $i] . ' sondern '. $num1 . " " . $aufgabe_operation . " " . $num2 . " = " . $ergebnis .
+									'</div>
+								';
 							echo '</section>';
 						} else {
 							echo '<section class="tr aw">';
